@@ -9,14 +9,14 @@ export PATH="$HOME/bin:$PATH";
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # MacPorts Installer addition on 2022-06-01_at_20:22:14: adding an appropriate PATH variable for use with MacPorts.
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-export MANPATH="/opt/local/share/man:$MANPATH"
+# export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# export MANPATH="/opt/local/share/man:$MANPATH"
 
 #vmNet for Colima / Lima VM
 export PATH="/opt/homebrew/opt/socket_vmnet/bin:$PATH"
 
 # Python
-export PATH="/Library/Frameworks/Python.framework/Versions/3.12/bin:$PATH"
+export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
 
 # History
 # http://lpetr.org/blog/archives/preserve-bash-history
