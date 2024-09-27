@@ -2,10 +2,11 @@
 
 mkdir -p ~/backups
 
-
+# Xcode cmdline tools
 xcode-select --install
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+# Brew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew update
 
 
@@ -14,39 +15,105 @@ mkvirtualenv --python3.12=/usr/local/bin/python3.12 py3.12-data
 workon py3.12-data
 
 
-brew install cask
-brew install --cask iterm2
+# Install GNU core utilities (those that come with macOS are outdated).
+# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
+brew install coreutils
+ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
+# Install GnuPG to enable PGP-signing commits.
+brew install gnupg
+# Install some other useful utilities like `sponge`.
+brew install wget --with-iri
+brew install moreutils
+brew install tree
+# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
+brew install findutils
+# Install GNU `sed`, overwriting the built-in `sed`.
+brew install gnu-sed --with-default-names
+# Install a modern version of Bash.
+brew install bash
+brew install bash-completion2
+# Switch to using brew-installed bash as default shell
+if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
+  echo "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells;
+  chsh -s "${BREW_PREFIX}/bin/bash";
+fi;
+# Install more recent versions of some macOS tools.
+brew install vim --with-override-system-vi
+brew install grep
+brew install openssh
+brew install screen
+brew install php
+brew install gmp
+brew install gnu-tar
+# Install font tools.
+brew tap bramstein/webfonttools
+brew install sfnt2woff
+brew install sfnt2woff-zopfli
+brew install woff2
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-# brew install --appdir="/Applications" awscli@2
-# brew install --appdir="/Applications" jq
-# brew install --appdir="/Applications" wget
-# brew install --appdir="/Applications" go
-# brew install --appdir="/Applications" kubernetes-cli
-# brew install --appdir="/Applications" sshuttle
+# Install some CTF tools; see https://github.com/ctfs/write-ups.
+brew install aircrack-ng
+brew install bfg
+# brew install binutils
+# brew install binwalk
+brew install cifer
+# brew install dex2jar
+brew install dns2tcp
+# brew install fcrackzip
+# brew install foremost
+brew install hashpump
+# brew install hydra
+brew install john
+brew install knock
+brew install netpbm
+brew install nmap
+brew install pngcheck
+brew install socat
+brew install sqlmap
+brew install tcpflow
+brew install tcpreplay
+brew install tcptrace
+# brew install ucspi-tcp # `tcpserver` etc.
+brew install xpdf
+brew install xz
+brew install ack
+brew install lynx
+#Install GIT binaries
+brew install git
+brew install git-lfs
+brew install gs
+# Docker binaries
+brew install docker
+brew install docker-compose
+brew install docker-completion
+brew install docker-buildx
+# Colima (lima linux - small footprint vm's - using for local docker context in liue of Docker Desktop)
+brew install colima
+# Install Fuzzy Finder (finder for shell commands) https://github.com/junegunn/fzf?tab=readme-ov-file#usage
+brew install fzf
+/usr/local/opt/fzf/install
+# Mooooo
+brew install cowsay
+# Install iTerm
+brew install --cask --appdir="/Applications" iterm2
 # brew install --cask --appdir="/Applications" multipass
-# brew install --cask --appdir="/Applications" colima
 # brew install --cask --appdir="/Applications" visual-studio-code
 # brew install --cask --appdir="/Applications" spotify
-brew install --cask --appdir="/Applications" docker
-brew install --appdir="/Applications" docker-compose
-brew install --appdir="/Applications" docker-completion
-brew install --appdir="/Applications" docker-buildx
 
+# Remove outdated versions from the cellar.
+brew cleanup
 
-# brew tap hashicorp/tap
-# brew install hashicorp/tap/terraform
-# brew upgrade hashicorp/tap/terraform
+# Install Oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# powerlevel10k Theme
+git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k   
+echo "set ZSH_THEME="powerlevel10k/powerlevel10k" in ~/.zshrc"
 
 
 # install font
 echo "download, install this font and set on iterm2 at Term2 > Preferences > Profile > Text > Font" 
 echo 'https://github.com/powerline/fonts/raw/master/Inconsolata/Inconsolata%20Bold%20for%20Powerline.ttf'
 
-
-# powerlevel10k
-git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k   
-echo "set ZSH_THEME="powerlevel10k/powerlevel10k" in ~/.zshrc"
 
 # iterm2 customization
 git clone https://github.com/mbadolato/iTerm2-Color-Schemes ~/Downloads/iterm2-color-schemes
@@ -55,6 +122,7 @@ rm -rf ~/Downloads/iterm2-color-schemes
 
 echo "restart iterm2 and change your theme at:" 
 echo "iTerm2 > Preferences > Profile > Colors > Color Presets -> Import: Argonaut"
+
 
 # dotfiles
 # get vim config
@@ -70,6 +138,7 @@ curl --silent https://raw.githubusercontent.com/JackieTreeh0rn/.dot-files/refs/h
 curl --silent https://raw.githubusercontent.com/JackieTreeh0rn/.dot-files/refs/heads/main/.oh-my.zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme --create-dirs --output ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 
 
-# brew install --appdir="/Applications" fzf
-# /usr/local/opt/fzf/install
-# source ~/.zshrc
+
+# source shell cfg
+source ~/.zshrc
+

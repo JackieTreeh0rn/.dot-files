@@ -5,39 +5,32 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# source autocomplete plugin
-source ~/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
-# source syntax highlighting plugin
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-
-# Add `~/bin` to the `$PATH`
-export PATH="$HOME/bin:$PATH";
-
-# Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# MacPorts Installer addition on 2022-06-01_at_20:22:14: adding an appropriate PATH variable for use with MacPorts.
-# export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-# export MANPATH="/opt/local/share/man:$MANPATH"
-
-#vmNet for Colima / Lima VM
-export PATH="/opt/homebrew/opt/socket_vmnet/bin:$PATH"
-
-# Python
-export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
-
-# history
+# History
 # https://unix.stackexchange.com/questions/273861/unlimited-history-in-zsh
 export HISTFILE=~/.zsh_history
 export HISTSIZE=500000
 export HISTFILESIZE=500000
 export HISTCONTROL=ignoredups:erasedups
 export SAVEHIST=$HISTSIZE
+
+
+# PATHs
+# Add `~/bin` to the `$PATH`
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+# GNU core utilities update from brew
+export $(brew --prefix coreutils)/libexec/gnubin:$PATH
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+#vmNet for Colima / Lima VM
+export PATH="/opt/homebrew/opt/socket_vmnet/bin:$PATH"
+# Python
+export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
+# Path to your Oh My Zsh installation ZSH only!!! 
+export ZSH="$HOME/.oh-my-zsh"
+# MacPorts
+# export MANPATH="/opt/local/share/man:$MANPATH"
+
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
@@ -47,9 +40,15 @@ for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
 done;
 unset file;
 
+# Custom Aliases
+# source ~/.custom/init.sh
 
-# Path to your Oh My Zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# import custom completions import that are placed here by utilities
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
+# FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -122,12 +121,12 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 # git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git $ZSH_CUSTOM/plugins/zsh-autocomplete
 # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 plugins=(git zsh-autosuggestions zsh-autocomplete zsh-syntax-highlighting)
-
+# source autocomplete plugin
+source ~/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# source syntax highlighting plugin
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -154,13 +153,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Custom Aliases
-# source ~/.custom/init.sh
-
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-
-# fpath+=~/.zfunc; autoload -Uz compinit; compinit
