@@ -47,10 +47,6 @@ unset file;
 # source ~/.custom/init.sh
 
 
-# ZSH - import custom completions import that are placed here by utilities
-fpath+=~/.zfunc; autoload -Uz compinit && compinit
-
-
 # FZF
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source <(fzf --zsh)
@@ -164,3 +160,7 @@ source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+# ZSH - import custom completions import that are placed here by utilities
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
