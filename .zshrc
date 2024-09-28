@@ -18,10 +18,11 @@ export SAVEHIST=$HISTSIZE
 # PATHs
 # Add `~/bin` to the `$PATH`
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-# GNU core utilities update from brew
-export $(brew --prefix coreutils)/libexec/gnubin:$PATH
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
+# GNU core utilities update from brew
+# export $(brew --prefix coreutils)/libexec/gnubin:$PATH
+export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
 #vmNet for Colima / Lima VM
 export PATH="/opt/homebrew/opt/socket_vmnet/bin:$PATH"
 # Python
@@ -43,11 +44,14 @@ unset file;
 # Custom Aliases
 # source ~/.custom/init.sh
 
-# import custom completions import that are placed here by utilities
-fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
+# ZSH - import custom completions import that are placed here by utilities
+fpath+=~/.zfunc; autoload -Uz compinit && compinit
+
 
 # FZF
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 
 
 # Set name of the theme to load --- if set to "random", it will

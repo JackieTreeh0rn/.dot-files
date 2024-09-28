@@ -1,5 +1,5 @@
 # aliases
-New-Alias lsd ls -lagf
+# New-Alias lsd ls -lagf
 
 # starship
 # https://starship.rs/guide/#🚀-installation

@@ -13,6 +13,9 @@ colorscheme molokai
 " disable paste visual mode
 set mouse-=a
 
+" fzf support in Vim
+set rtp+=/opt/homebrew/opt/fzf
+
 " recognize .txt extension as being human-language text
 augroup filetype
   autocmd BufNewFile,BufRead *.txt set filetype=human

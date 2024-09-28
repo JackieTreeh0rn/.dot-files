@@ -16,6 +16,9 @@ else # macOS `ls`
   colorflag="-G"
 fi
 
+# Always use color output for ls
+alias ls="command ls ${colorflag}"
+
 # List all files colorized in long format
 alias ll="ls -lF ${colorflag}"
 
@@ -32,8 +35,6 @@ alias dsp='docker system prune'
 # git
 alias wow='git status -s'
 
-# Always use color output for `ls`
-alias ls="command ls ${colorflag}"
 
 # lock screen on mac
 alias lock='pmset displaysleepnow'
