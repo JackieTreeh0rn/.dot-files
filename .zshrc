@@ -18,6 +18,8 @@ export SAVEHIST=$HISTSIZE
 # PATHs
 # Add `~/bin` to the `$PATH`
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+# Add pipx .local/bin to $PATH (Pipx adds a symbolic link to the ~/.local/bin for apps installed)
+export PATH=$HOME/.local/bin:$PATH
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 # GNU core utilities update from brew

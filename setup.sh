@@ -10,7 +10,8 @@ xcode-select --install
 brew update
 
 
-# brew install python@3.12
+brew install python@3.12
+brew install pipx
 # mkvirtualenv --python3.12=/usr/local/bin/python3.12 py3.12-data
 # workon py3.12-data
 
