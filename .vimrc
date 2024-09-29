@@ -13,9 +13,6 @@ colorscheme molokai
 " disable paste visual mode
 set mouse-=a
 
-" fzf support in Vim
-set rtp+=/opt/homebrew/opt/fzf
-
 " recognize .txt extension as being human-language text
 augroup filetype
   autocmd BufNewFile,BufRead *.txt set filetype=human
@@ -40,4 +37,6 @@ autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 "set smarttab
 "set expandtab
 
+" fzf support in Vim
+set rtp+=/opt/homebrew/opt/fzf
 

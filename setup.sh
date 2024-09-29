@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-mkdir -p ~/backups
+mkdir -p ~/.backups
 
 # Xcode cmdline tools
 xcode-select --install
@@ -11,8 +11,12 @@ brew update
 
 
 brew install python@3.12
-# mkvirtualenv --python3.12=/usr/local/bin/python3.12 py3.12-data
-# workon py3.12-data
+brew install virtualenv
+brew install virtualenvwrapper
+echo "Must add export WORKON_HOME=~"/.virtualenvs" and source virtualenvwrapper.sh to .zshrc or .bashrc"
+# Using: 
+# mkvirtualenv -p python3.12 ENVNAME
+# workon ENVNAME
 
 
 # Install GNU core utilities (those that come with macOS are outdated).

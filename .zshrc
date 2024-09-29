@@ -15,7 +15,7 @@ export HISTCONTROL=ignoredups:erasedups
 export SAVEHIST=$HISTSIZE
 
 
-# PATHs
+# EXPORTS
 # Add `~/bin` to the `$PATH`
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 # Homebrew
@@ -27,27 +27,18 @@ export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/socket_vmnet/bin:$PATH"
 # Python
 export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
+# Python env 
+export WORKON_HOME=~"/.virtualenvs"
+source virtualenvwrapper.sh
 # Path to your Oh My Zsh installation ZSH only!!! 
 export ZSH="$HOME/.oh-my-zsh"
 # MacPorts
 # export MANPATH="/opt/local/share/man:$MANPATH"
+# Set language character set
+export LANG=en_US.UTF-8
+# Compilation flags
+export ARCHFLAGS="-arch $(uname -m)"
 
-
-# Load the shell dotfiles, and then some:
-# * ~/.path can be used to extend `$PATH`.
-# * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
-  [ -r "$file" ] && [ -f "$file" ] && source "$file";
-done;
-unset file;
-
-# Custom Aliases
-# source ~/.custom/init.sh
-
-
-# FZF
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source <(fzf --zsh)
 
 
 # Set name of the theme to load --- if set to "random", it will
@@ -126,23 +117,6 @@ source ~/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # source syntax highlighting plugin
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# source oh-my-zsh
-source $ZSH/oh-my-zsh.sh
-
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch $(uname -m)"
-
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
 # users are encouraged to define aliases within a top-level file in
@@ -155,10 +129,38 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# source oh-my-zsh
+source $ZSH/oh-my-zsh.sh
+
+
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export VISUAL='vim'
+#   export EDITOR="$VISUAL"
+# else
+#   export EDITOR='nvim'
+# fi
+
+
+# Load the shell dotfiles, and then some:
+# * ~/.path can be used to extend `$PATH`.
+# * ~/.extra can be used for other settings you don’t want to commit.
+for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
+  [ -r "$file" ] && [ -f "$file" ] && source "$file";
+done;
+unset file;
+
+# Custom Aliases
+# source ~/.custom/init.sh
 
 # ZSH - import custom completions import that are placed here by utilities
 fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
+
+# FZF
+source <(fzf --zsh)
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

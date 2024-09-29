@@ -11,7 +11,7 @@ shopt -s histappend
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
 
-# PATHs
+# EXPORTS
 # Add `~/bin` to the `$PATH`
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 # Homebrew
@@ -23,8 +23,24 @@ export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/socket_vmnet/bin:$PATH"
 # Python
 export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
+# Python env 
+export WORKON_HOME=~"/.virtualenvs"
+source virtualenvwrapper.sh
 # MacPorts
 # export MANPATH="/opt/local/share/man:$MANPATH"
+# Set language character set
+export LANG=en_US.UTF-8
+# Compilation flags
+export ARCHFLAGS="-arch $(uname -m)"
+
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export VISUAL='vim'
+#   export EDITOR="$VISUAL"
+# else
+#   export EDITOR='nvim'
+# fi
 
 
 # Load the shell dotfiles, and then some:
@@ -41,5 +57,4 @@ unset file;
 
 # FZF
 eval "$(fzf --bash)"
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
