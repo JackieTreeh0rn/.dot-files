@@ -32,6 +32,8 @@ source virtualenvwrapper.sh
 export LANG=en_US.UTF-8
 # Compilation flags
 export ARCHFLAGS="-arch $(uname -m)"
+# Docker w/colima
+export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
 
 
 # Preferred editor for local and remote sessions

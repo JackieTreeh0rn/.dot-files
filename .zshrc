@@ -38,6 +38,8 @@ export ZSH="$HOME/.oh-my-zsh"
 export LANG=en_US.UTF-8
 # Compilation flags
 export ARCHFLAGS="-arch $(uname -m)"
+# Docker w/colima
+export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
 
 
 
