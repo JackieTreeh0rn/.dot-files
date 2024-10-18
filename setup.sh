@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-mkdir -p ~/.backups
-
 # Xcode cmdline tools
 xcode-select --install
 
@@ -137,20 +135,36 @@ echo "You must restart iterm2 and change your theme at:"
 echo "iTerm2 > Preferences > Profile > Colors > Color Presets -> Import: Argonaut"
 
 
-# # dotfiles
-# # get vim config
-# curl --silent https://raw.githubusercontent.com/JackieTreeh0rn/.dot-files/refs/heads/main/.vimrc --output ~/.vimrc
+## PULL dot files
+# Define the repository URL
+REPO_URL="https://github.com/JackieTreeh0rn/.dot-files"
+DOTFILES_DIR="$HOME/.dotfiles"
 
-# # get vim colors
-# curl --silent https://github.com/JackieTreeh0rn/.dot-files/blob/main/.vim/colors/molokai.vim --create-dirs --output ~/.vim/colors/molokai.vim
+# Clone the repository if it doesn't exist
+if [[ ! -d "$DOTFILES_DIR" ]]; then
+    git clone "$REPO_URL" "$DOTFILES_DIR"
+else
+    echo "Dotfiles repository already cloned. Pulling latest changes..."
+    git -C "$DOTFILES_DIR" pull
+fi
 
-# # get zsh config
-# curl --silent https://raw.githubusercontent.com/JackieTreeh0rn/.dot-files/refs/heads/main/.zshrc --output ~/.zshrc
+# Copy dotfiles and dotfolders to the home directory
+cd "$DOTFILES_DIR"
+for file in .*; do
+    if [[ $file != "." && $file != ".." && $file != ".git" ]]; then
+        cp -r "$file" "$HOME/"
+        echo "Installed $file to $HOME/"
+    fi
+done
 
-# # get and apply zsh powerlevel10k.zsh-theme
-# curl --silent https://raw.githubusercontent.com/JackieTreeh0rn/.dot-files/refs/heads/main/.oh-my.zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme --create-dirs --output ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
+# Determine which shell is in use and source the appropriate configuration
+current_shell=$(basename "$SHELL")
 
+if [[ "$current_shell" == "zsh" && -f "$HOME/.zshrc" ]]; then
+    source "$HOME/.zshrc"
+elif [[ "$current_shell" == "bash" && -f "$HOME/.bashrc" ]]; then
+    source "$HOME/.bashrc"
+fi
 
-# source final shell .dot config
-source ~/.zshrc
+echo "Dotfiles installation complete."
 
