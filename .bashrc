@@ -15,14 +15,14 @@ export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; histor
 # Add `~/bin` to the `$PATH`
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 # Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
 # GNU core utilities update from brew
 # export $(brew --prefix coreutils)/libexec/gnubin:$PATH
 export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
 #vmNet for Colima / Lima VM
-export PATH="/opt/homebrew/opt/socket_vmnet/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/socket_vmnet/bin:$PATH"
 # Python
-export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/python/libexec/bin:$PATH"
 # Python env 
 export WORKON_HOME=~"/.virtualenvs"
 source virtualenvwrapper.sh

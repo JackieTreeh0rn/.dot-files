@@ -95,7 +95,7 @@ brew install docker-buildx
 brew install colima
 # Install Fuzzy Finder (finder for shell commands) https://github.com/junegunn/fzf?tab=readme-ov-file#usage
 brew install fzf
-/opt/homebrew/opt/fzf/install
+${HOMEBREW_PREFIX}/opt/fzf/install
 # Mooooo
 brew install cowsay
 # Install iTerm
@@ -115,18 +115,17 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 # powerlevel10k Theme
 # To configure, run `p10k configure` or edit ~/.p10k.zsh
 git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k   
-echo "set ZSH_THEME="powerlevel10k/powerlevel10k" in ~/.zshrc"
+echo "You must set ZSH_THEME="powerlevel10k/powerlevel10k" in ~/.zshrc"
 
 
 # Install Fonts
 # References: https://github.com/powerline/fonts 
 echo "Download and manually install fonts in your OS after..."
-echo "Install iTERM2: Term2 -> Preferences -> Profile > Text -> Font"
-echo "Install VSCode: settings.json -> "editor.fontFamily": "MesloLGS NF" and "terminal.integrated.fontFamily": "MesloLGS NF""
+echo "Select font in iTERM2: Term2 -> Preferences -> Profile > Text -> Font"
+echo "Select font in VSCode: settings.json -> "editor.fontFamily": "MesloLGS NF" and "terminal.integrated.fontFamily": "MesloLGS NF""
 curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf --output ~/Downloads
 curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf --output ~/Downloads
 curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf --output ~/Downloads
-curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf --output ~/Downloads
 curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf --output ~/Downloads
 
 
@@ -134,7 +133,7 @@ curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS
 git clone https://github.com/mbadolato/iTerm2-Color-Schemes ~/Downloads/iterm2-color-schemes
 ~/Downloads/iterm2-color-schemes/tools/import-scheme.sh -v ~/Downloads/iterm2-color-schemes/schemes/*
 rm -rf ~/Downloads/iterm2-color-schemes
-echo "Restart iterm2 and change your theme at:" 
+echo "You must restart iterm2 and change your theme at:" 
 echo "iTerm2 > Preferences > Profile > Colors > Color Presets -> Import: Argonaut"
 
 

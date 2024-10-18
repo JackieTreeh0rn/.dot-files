@@ -19,18 +19,18 @@ export SAVEHIST=$HISTSIZE
 # Add `~/bin` to the `$PATH`
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 # Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
 # GNU core utilities update from brew
 # export $(brew --prefix coreutils)/libexec/gnubin:$PATH
 export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
 #vmNet for Colima / Lima VM
-export PATH="/opt/homebrew/opt/socket_vmnet/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/socket_vmnet/bin:$PATH"
 # Python
-export PATH="/opt/homebrew/opt/python/libexec/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/python/libexec/bin:$PATH"
 # Python env 
 export WORKON_HOME=~"/.virtualenvs"
 source virtualenvwrapper.sh
-# Path to your Oh My Zsh installation ZSH only!!! 
+# Path to your Oh My Zsh installation ZSH only!!!
 export ZSH="$HOME/.oh-my-zsh"
 # MacPorts
 # export MANPATH="/opt/local/share/man:$MANPATH"
@@ -87,7 +87,7 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # You can also set it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -117,7 +117,9 @@ plugins=(git zsh-autosuggestions zsh-autocomplete zsh-syntax-highlighting)
 # source autocomplete plugin
 source ~/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # source syntax highlighting plugin
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source auto-suggestion plugin
+source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions.plugin.zsh
 
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
