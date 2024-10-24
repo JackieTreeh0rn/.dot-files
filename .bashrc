@@ -15,8 +15,14 @@ export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; histor
 # Add `~/bin` to the `$PATH`
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 # Homebrew
+if [ -x /opt/homebrew/bin/brew ]; then
+    # Apple Silicon
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -x /usr/local/bin/brew ]; then
+    # Intel
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
 export HOMEBREW_PREFIX=$(brew --prefix)
-eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 # GNU core utilities update from brew
 # export $(brew --prefix coreutils)/libexec/gnubin:$PATH
 export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
