@@ -6,13 +6,14 @@ DOTFILES_DIR="$HOME/.dotfiles"
 
 # Clone the repository if it doesn't exist
 if [[ ! -d "$DOTFILES_DIR" ]]; then
-    if ! git clone "$REPO_URL" "$DOTFILES_DIR"; then
+    echo "Cloning dotfiles repository..."
+    if ! git clone --verbose "$REPO_URL" "$DOTFILES_DIR"; then
         echo "Failed to clone the repository. Please check your network connection and access rights."
         exit 1
     fi
 else
     echo "Dotfiles repository already cloned. Pulling latest changes..."
-    if ! git -C "$DOTFILES_DIR" pull; then
+    if ! git -C "$DOTFILES_DIR" pull --verbose; then
         echo "Failed to pull the latest changes. Please check your network connection and access rights."
         exit 1
     fi
@@ -22,6 +23,7 @@ fi
 function syncDotfiles() {
     rsync --exclude ".git/" \
         --exclude ".DS_Store" \
+        --exclude ".gitignore" \
         --exclude ".osx" \
         --exclude "bootstrap.sh" \
         --exclude "setup.sh" \
@@ -41,6 +43,7 @@ else
         SYNCED=true
     else
         SYNCED=false
+        echo "No files were overwritten."
     fi
 fi
 
@@ -49,9 +52,10 @@ if [ "$SYNCED" = true ]; then
     # Source .zshrc if running in Zsh
     if [ -n "$ZSH_VERSION" ] && [ -f "$HOME/.zshrc" ]; then
         source "$HOME/.zshrc"
+        echo "Sourced .zshrc"
     elif [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
         source "$HOME/.bashrc"
+        echo "Sourced .bashrc"
     fi
+    echo "Dotfiles installation complete."
 fi
-
-echo "Dotfiles installation complete."
