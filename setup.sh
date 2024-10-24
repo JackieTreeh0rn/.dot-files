@@ -135,7 +135,7 @@ echo "You must set ZSH_THEME="powerlevel10k/powerlevel10k" in ~/.zshrc"
 # Install Fonts
 # References: https://github.com/powerline/fonts 
 echo "Download and manually install fonts in your OS after..."
-mkdir -p "${HOME}/Fonts"
+mkdir -p "${HOME}/.fonts"
 curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf --output ${HOME}/.fonts
 curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf --output ${HOME}/.fonts
 curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf --output ${HOME}/.fonts
@@ -150,3 +150,7 @@ ${HOME}/Downloads/iterm2-color-schemes/tools/import-scheme.sh -v ${HOME}/Downloa
 rm -rf ${HOME}/Downloads/iterm2-color-schemes
 echo "You must restart iterm2 and change your theme at:" 
 echo "iTerm2 > Preferences > Profile > Colors > Color Presets -> Import: Argonaut"
+
+echo -#####################################-
+echo run ./bootstrap.sh to pull .dot files
+echo -#####################################-
