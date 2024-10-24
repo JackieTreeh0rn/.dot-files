@@ -6,7 +6,9 @@ xcode-select --install
 # Brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew update
-
+brew upgrade
+# Save Homebrew’s installed location.
+HOMEBREW_PREFIX=$(brew --prefix)
 
 brew install python@3.12
 brew install virtualenv
@@ -38,7 +40,7 @@ brew install bash-completion2
 if ! fgrep -q "${HOMEBREW_PREFIX}/bin/bash" /etc/shells; then
   echo "${HOMEBREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells;
   # chsh -s "${HOMEBREW_PREFIX}/bin/bash"; # sticking with zsh
-fi;
+fi
 # Install more recent versions of some macOS tools.
 brew install vim #--with-override-system-vi
 brew install grep
@@ -109,8 +111,16 @@ brew cleanup
 
 # Install Oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# Set prelimnary ZSH variables for configuring
+ZSH="${HOME}/.oh-my-zsh"
+ZSH_CUSTOM="$ZSH/custom"
 
-# powerlevel10k Theme
+# Oh-my-zsh plugins
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git $ZSH_CUSTOM/plugins/zsh-autocomplete
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+
+# Theme - powerlevel10k
 # To configure, run `p10k configure` or edit ~/.p10k.zsh
 git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k   
 echo "You must set ZSH_THEME="powerlevel10k/powerlevel10k" in ~/.zshrc"
