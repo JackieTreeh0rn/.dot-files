@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 # Define the repository URL
 REPO_URL="https://github.com/JackieTreeh0rn/.dot-files"
@@ -30,7 +30,7 @@ function syncDotfiles() {
 }
 
 # Prompt for confirmation
-if [ "$1" == "--force" -o "$1" == "-f" ]; then
+if [ "$1" = "--force" ] || [ "$1" = "-f" ]; then
     syncDotfiles
     SYNCED=true
 else
@@ -45,11 +45,11 @@ else
 fi
 
 # Only source configuration if files were synced
-if [[ "$SYNCED" == true ]]; then
+if [ "$SYNCED" = true ]; then
     # Source .zshrc if running in Zsh
-    if [[ -n "$ZSH_VERSION" && -f "$HOME/.zshrc" ]]; then
+    if [ -n "$ZSH_VERSION" ] && [ -f "$HOME/.zshrc" ]; then
         source "$HOME/.zshrc"
-    elif [[ -n "$BASH_VERSION" && -f "$HOME/.bashrc" ]]; then
+    elif [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
         source "$HOME/.bashrc"
     fi
 fi
