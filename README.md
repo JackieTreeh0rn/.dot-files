@@ -24,7 +24,8 @@ This repository contains my personal configuration files and setup scripts for m
 
 ## Screenshot
 
-![Terminal Screenshot](screenshot.png)
+![Screen Shot 2024-10-24 at 02 00 50 AM](https://github.com/user-attachments/assets/f37972d2-316f-496a-88e5-9d5634d08f1a)
+
 
 *This screenshot shows the terminal appearance after running the setup scripts.*
 
