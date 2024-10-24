@@ -31,15 +31,29 @@ function syncDotfiles() {
         -avh --no-perms "$DOTFILES_DIR/" "$HOME/"
 }
 
+# Function to install fonts
+function installFonts() {
+    FONT_DIR="$HOME/.fonts"
+    if [[ -d "$FONT_DIR" ]]; then
+        echo "Installing fonts from $FONT_DIR..."
+        cp "$FONT_DIR"/* "$HOME/Library/Fonts/"
+        echo "Fonts installed."
+    else
+        echo "No fonts to install."
+    fi
+}
+
 # Prompt for confirmation
 if [ "$1" = "--force" ] || [ "$1" = "-f" ]; then
     syncDotfiles
+    installFonts
     SYNCED=true
 else
     read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1
     echo ""
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         syncDotfiles
+        installFonts
         SYNCED=true
     else
         SYNCED=false
