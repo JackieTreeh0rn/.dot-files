@@ -140,6 +140,7 @@ curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS
 curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf --output ${HOME}/.fonts
 curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf --output ${HOME}/.fonts
 curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf --output ${HOME}/.fonts
+cp ${HOME}/.fonts/* $HOME/Library/Fonts/
 echo "Select font in iTERM2: Term2 -> Preferences -> Profile > Text -> Font"
 echo "Select font in VSCode: settings.json -> "editor.fontFamily": "MesloLGS NF" and "terminal.integrated.fontFamily": "MesloLGS NF""
 
