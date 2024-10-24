@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
 
-# Xcode cmdline tools
-xcode-select --install
-sudo softwareupdate -i -a
+# Check for Xcode Command Line Tools
+if ! xcode-select -p &>/dev/null; then
+    xcode-select --install
+    sudo softwareupdate -i -a
+fi
 
-# Brew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# Check for Homebrew and install
+if ! command -v brew &>/dev/null; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
 brew update
 brew upgrade
 # Save Homebrew’s installed location.
@@ -130,10 +135,11 @@ echo "You must set ZSH_THEME="powerlevel10k/powerlevel10k" in ~/.zshrc"
 # Install Fonts
 # References: https://github.com/powerline/fonts 
 echo "Download and manually install fonts in your OS after..."
-curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf --output ${HOME}/Fonts
-curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf --output ${HOME}/Fonts
-curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf --output ${HOME}/Fonts
-curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf --output ${HOME}/Fonts
+mkdir -p "${HOME}/Fonts"
+curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf --output ${HOME}/.fonts
+curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf --output ${HOME}/.fonts
+curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf --output ${HOME}/.fonts
+curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf --output ${HOME}/.fonts
 echo "Select font in iTERM2: Term2 -> Preferences -> Profile > Text -> Font"
 echo "Select font in VSCode: settings.json -> "editor.fontFamily": "MesloLGS NF" and "terminal.integrated.fontFamily": "MesloLGS NF""
 
