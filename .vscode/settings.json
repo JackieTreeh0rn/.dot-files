@@ -1,0 +1,275 @@
+{
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.stickyScroll.enabled": true,
+    "explorer.sortOrder": "type",
+    "explorer.confirmDragAndDrop": false,
+    "workbench.colorCustomizations": {
+        "terminal.background": "#090300",
+        "terminal.foreground": "#A5A2A2",
+        "terminalCursor.background": "#A5A2A2",
+        "terminalCursor.foreground": "#A5A2A2",
+        "terminal.ansiBlack": "#090300",
+        "terminal.ansiBlue": "#01A0E4",
+        "terminal.ansiBrightBlack": "#5C5855",
+        "terminal.ansiBrightBlue": "#01A0E4",
+        "terminal.ansiBrightCyan": "#B5E4F4",
+        "terminal.ansiBrightGreen": "#01A252",
+        "terminal.ansiBrightMagenta": "#A16A94",
+        "terminal.ansiBrightRed": "#DB2D20",
+        "terminal.ansiBrightWhite": "#F7F7F7",
+        "terminal.ansiBrightYellow": "#FDED02",
+        "terminal.ansiCyan": "#B5E4F4",
+        "terminal.ansiGreen": "#01A252",
+        "terminal.ansiMagenta": "#A16A94",
+        "terminal.ansiRed": "#DB2D20",
+        "terminal.ansiWhite": "#A5A2A2",
+        "terminal.ansiYellow": "#FDED02",
+        "[Material Theme Darker]": {
+            "activityBarBadge.background": "#2979FF",
+            "activityBar.activeBorder": "#2979FF",
+            "list.activeSelectionForeground": "#2979FF",
+            "list.inactiveSelectionForeground": "#2979FF",
+            "list.highlightForeground": "#2979FF",
+            "scrollbarSlider.activeBackground": "#2979FF50",
+            "editorSuggestWidget.highlightForeground": "#2979FF",
+            "textLink.foreground": "#2979FF",
+            "progressBar.background": "#2979FF",
+            "pickerGroup.foreground": "#2979FF",
+            "tab.activeBorder": "#2979FF",
+            "notificationLink.foreground": "#2979FF",
+            "editorWidget.resizeBorder": "#2979FF",
+            "editorWidget.border": "#2979FF",
+            "settings.modifiedItemIndicator": "#2979FF",
+            "settings.headerForeground": "#2979FF",
+            "panelTitle.activeBorder": "#2979FF",
+            "breadcrumb.activeSelectionForeground": "#2979FF",
+            "menu.selectionForeground": "#2979FF",
+            "menubar.selectionForeground": "#2979FF",
+            "editor.findMatchBorder": "#2979FF",
+            "selection.background": "#2979FF40",
+            "statusBarItem.remoteBackground": "#2979FF"
+        },
+        "[Material Theme Ocean High Contrast]": {
+            "activityBarBadge.background": "#64FFDA",
+            "activityBar.activeBorder": "#64FFDA",
+            "list.activeSelectionForeground": "#64FFDA",
+            "list.inactiveSelectionForeground": "#64FFDA",
+            "list.highlightForeground": "#64FFDA",
+            "scrollbarSlider.activeBackground": "#64FFDA50",
+            "editorSuggestWidget.highlightForeground": "#64FFDA",
+            "textLink.foreground": "#64FFDA",
+            "progressBar.background": "#64FFDA",
+            "pickerGroup.foreground": "#64FFDA",
+            "tab.activeBorder": "#64FFDA",
+            "notificationLink.foreground": "#64FFDA",
+            "editorWidget.resizeBorder": "#64FFDA",
+            "editorWidget.border": "#64FFDA",
+            "settings.modifiedItemIndicator": "#64FFDA",
+            "settings.headerForeground": "#64FFDA",
+            "panelTitle.activeBorder": "#64FFDA",
+            "breadcrumb.activeSelectionForeground": "#64FFDA",
+            "menu.selectionForeground": "#64FFDA",
+            "menubar.selectionForeground": "#64FFDA",
+            "editor.findMatchBorder": "#64FFDA",
+            "selection.background": "#64FFDA40",
+            "statusBarItem.remoteBackground": "#64FFDA"
+        }
+    },
+    "terminal.integrated.cursorBlinking": true,
+    "vs-kubernetes": {
+        "vscode-kubernetes.helm-path.mac": "~/.vs-kubernetes/tools/helm/darwin-amd64/helm"
+    },
+    "editor.wordWrap": "on",
+    "workbench.editor.highlightModifiedTabs": true,
+    "explorer.compactFolders": false,
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "explorer.confirmDelete": false,
+    "workbench.editorAssociations": {
+        "*.odt": "default",
+        "*.plist": "default"
+    },
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "powershell.powerShellDefaultVersion": "PowerShell",
+ /*   
+    "powershell.powerShellAdditionalExePaths": {
+        "PowerShell": "/usr/local/bin/pwsh"
+    },
+*/
+ // "powershell.integratedConsole.suppressStartupBanner": true,
+    "powershell.debugging.createTemporaryIntegratedConsole": true,
+    "powershell.codeFormatting.preset": "Custom",
+    "powershell.codeFormatting.useCorrectCasing": true,
+    "powershell.codeFormatting.autoCorrectAliases": true,
+    "powershell.codeFormatting.whitespaceBeforeOpenBrace": true,
+    "powershell.codeFormatting.whitespaceBeforeOpenParen": true,
+    "powershell.codeFormatting.whitespaceAroundOperator": true,
+    "powershell.codeFormatting.whitespaceAfterSeparator": true,
+    "powershell.codeFormatting.addWhitespaceAroundPipe": true,
+    "powershell.codeFormatting.ignoreOneLineBlock": true,
+    "powershell.codeFormatting.newLineAfterCloseBrace": false,
+    "powershell.codeFormatting.newLineAfterOpenBrace": true,
+    "powershell.codeFormatting.openBraceOnSameLine": true,
+    "powershell.codeFormatting.alignPropertyValuePairs": false,
+    "powershell.codeFolding.enable": true,
+    "powershell.scriptAnalysis.enable": true,
+    "powershell.promptToUpdatePowerShell": false,
+    "workbench.iconTheme": "vscode-icons",
+    "editor.fontFamily": "MesloLGS NF",
+    "editor.fontLigatures": true,
+    // "terminal.integrated.fontFamily": "Fira Code",
+    "terminal.integrated.fontFamily": "MesloLGS NF",  
+    "terminal.integrated.shell.osx": "/bin/zsh",
+    "terminal.integrated.shellIntegration.enabled": true,
+  
+
+
+        // "logViewer.watch": [
+        
+        //   {
+
+        //         "title": "Comfyui Log",
+        //         "pattern": "~/_GIT/DEV/Ai/_sources/ComfyUI/comfyui.log"
+        //     },
+
+        // ],
+
+
+        "python.analysis.autoImportCompletions": true,
+        "logViewer.options": {
+
+        },
+        "logViewer.showStatusBarItemOnChange": true,
+        "logViewer.logLevel": "debug",
+        "redhat.telemetry.enabled": true,
+        "github.codespaces.connectionType": "any",
+        "github.codespaces.defaultExtensions": [
+
+            "GitHub.codespaces",
+            "GitHub.vscode-pull-request-github"
+        ],
+        "github.codespaces.showPerformanceExplorer": true,
+        "crypto-ticker.tickers": [
+
+            {
+                "symbol": "BTC",
+                "currency": "USD",
+                "exchange": "CCCAGG",
+                "template": "{symbol} {price}"
+            },
+            {
+                "symbol": "ETH"
+            },
+            {
+                "symbol": "XRP"
+            }
+        ],
+        "workbench.productIconTheme": "macos-modern",
+        "git.openRepositoryInParentFolders": "never",
+        "cloudcode.apigee.dockerOptions": {
+            "environmentVariables": {
+                "XTERM": "xterm-256color"
+            },
+            "dns": "8.8.8.8",
+            "detached": true,
+            "privileged": true,
+            "labels": {},
+            "volumes": {},
+            "additionalArguments": ""
+        },
+        "spellright.documentTypes": [
+            
+            "markdown",
+            "latex",
+            "plaintext"
+        ],
+        "cloudcode.customApplications": [],
+        "files.associations": {
+            "Procfile": "procfile"
+        },
+        "[shellscript]": {
+            "breadcrumbs.showClasses": true,
+            "breadcrumbs.showConstants": true,
+            "breadcrumbs.showArrays": true,
+            "breadcrumbs.showFunctions": true,
+            "breadcrumbs.showMethods": true,
+            "breadcrumbs.showNull": true,
+            "breadcrumbs.showFiles": true,
+            "breadcrumbs.showFields": true,
+            "breadcrumbs.showOperators": true,
+            "breadcrumbs.showVariables": true,
+            "files.eol": "\n"
+        },
+        "materialTheme.accent": "Bright Teal",
+        "workbench.colorTheme": "GitHub Dark Default",
+        "lldb.suppressUpdateNotifications": true,
+        "workbench.editor.splitInGroupLayout": "vertical",
+        "editor.unicodeHighlight.invisibleCharacters": false,
+        "terminal.integrated.env.osx": {
+
+        },
+        "editor.accessibilitySupport": "off",
+        "github.copilot.enable": {
+            "*": false,
+            "plaintext": false,
+            "markdown": true,
+            "scminput": false
+        },
+        "editor.largeFileOptimizations": false,
+        "vsicons.dontShowNewVersionMessage": true,
+        "diffEditor.renderSideBySide": false,
+        "git.ignoreRebaseWarning": true,
+        "[yaml]": {
+            "editor.insertSpaces": true,
+            "editor.tabSize": 2,
+            "editor.autoIndent": "keep",
+            "diffEditor.ignoreTrimWhitespace": false,
+            "editor.quickSuggestions": {
+                "other": true,
+                "comments": false,
+                "strings": true
+            }
+        },
+        "workbench.editor.empty.hint": "hidden",
+        "markdown-preview-enhanced.codeBlockTheme": "auto.css",
+        "markdown-preview-enhanced.previewTheme": "github-dark.css",
+        "markdown-preview-enhanced.revealjsTheme": "moon.css",
+        "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
+        "gitlens.ai.experimental.provider": "openai",
+        "gitlens.ai.experimental.openai.model": "gpt-4-turbo",
+        "diffEditor.maxComputationTime": 0,
+        "githubPullRequests.pullBranch": "never",
+        "accessibility.signals.lineHasError": {
+            "sound": "off"
+        },
+        "accessibility.signals.terminalBell": {
+            "sound": "on"
+        },
+        "terminal.integrated.enableVisualBell": true,
+        "editor.minimap.enabled": false,
+        "settingsSync.ignoredExtensions": [],
+        "explorer.fileNesting.expand": false,
+        "search.defaultViewMode": "tree",
+        "scm.defaultViewMode": "tree",
+        "gitlens.views.repositories.includeWorkingTree": true,
+        "parallels-desktop.extension.path": "~/.parallels-desktop-vscode",
+        "parallels-desktop.brew.path": "/opt/homebrew/bin/brew",
+        "parallels-desktop.git.path": "/opt/homebrew/bin/git",
+        "parallels-desktop.extension.download.path": "~/.parallels-desktop-vscode/downloads",
+        "githubPullRequests.createOnPublishBranch": "never",
+        "cmake.showOptionsMovedNotification": false,
+        "go.toolsManagement.autoUpdate": true,
+        "inference.model": "codellama:7b-code-q4_K_S",
+        "inference.temperature": 0.3,
+        "inference.custom.format": "codellama",
+        "cmake.configureOnOpen": true,
+        "workbench.startupEditor": "none",
+
+
+
+
+
+}
