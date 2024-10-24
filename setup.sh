@@ -2,6 +2,7 @@
 
 # Xcode cmdline tools
 xcode-select --install
+sudo softwareupdate -i -a
 
 # Brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -113,68 +114,32 @@ brew cleanup
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # Set prelimnary ZSH variables for configuring
 ZSH="${HOME}/.oh-my-zsh"
-ZSH_CUSTOM="$ZSH/custom"
+ZSH_CUSTOM="${ZSH}/custom"
 
 # Oh-my-zsh plugins
-git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
-git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git $ZSH_CUSTOM/plugins/zsh-autocomplete
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
+git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git ${ZSH_CUSTOM}/plugins/zsh-autocomplete
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting
 
 # Theme - powerlevel10k
 # To configure, run `p10k configure` or edit ~/.p10k.zsh
-git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k   
+git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM}/themes/powerlevel10k   
 echo "You must set ZSH_THEME="powerlevel10k/powerlevel10k" in ~/.zshrc"
 
 
 # Install Fonts
 # References: https://github.com/powerline/fonts 
 echo "Download and manually install fonts in your OS after..."
+curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf --output ${HOME}/Fonts
+curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf --output ${HOME}/Fonts
+curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf --output ${HOME}/Fonts
+curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf --output ${HOME}/Fonts
 echo "Select font in iTERM2: Term2 -> Preferences -> Profile > Text -> Font"
 echo "Select font in VSCode: settings.json -> "editor.fontFamily": "MesloLGS NF" and "terminal.integrated.fontFamily": "MesloLGS NF""
-curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf --output ~/Downloads
-curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf --output ~/Downloads
-curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf --output ~/Downloads
-curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf --output ~/Downloads
-
 
 # iterm2 customization
-git clone https://github.com/mbadolato/iTerm2-Color-Schemes ~/Downloads/iterm2-color-schemes
-~/Downloads/iterm2-color-schemes/tools/import-scheme.sh -v ~/Downloads/iterm2-color-schemes/schemes/*
-rm -rf ~/Downloads/iterm2-color-schemes
+git clone https://github.com/mbadolato/iTerm2-Color-Schemes ${HOME}/Downloads/iterm2-color-schemes
+${HOME}/Downloads/iterm2-color-schemes/tools/import-scheme.sh -v ${HOME}/Downloads/iterm2-color-schemes/schemes/*
+rm -rf ${HOME}/Downloads/iterm2-color-schemes
 echo "You must restart iterm2 and change your theme at:" 
 echo "iTerm2 > Preferences > Profile > Colors > Color Presets -> Import: Argonaut"
-
-
-## PULL dot files
-# Define the repository URL
-REPO_URL="https://github.com/JackieTreeh0rn/.dot-files"
-DOTFILES_DIR="$HOME/.dotfiles"
-
-# Clone the repository if it doesn't exist
-if [[ ! -d "$DOTFILES_DIR" ]]; then
-    git clone "$REPO_URL" "$DOTFILES_DIR"
-else
-    echo "Dotfiles repository already cloned. Pulling latest changes..."
-    git -C "$DOTFILES_DIR" pull
-fi
-
-# Copy dotfiles and dotfolders to the home directory
-cd "$DOTFILES_DIR"
-for file in .*; do
-    if [[ $file != "." && $file != ".." && $file != ".git" ]]; then
-        cp -r "$file" "$HOME/"
-        echo "Installed $file to $HOME/"
-    fi
-done
-
-# Determine which shell is in use and source the appropriate configuration
-current_shell=$(basename "$SHELL")
-
-if [[ "$current_shell" == "zsh" && -f "$HOME/.zshrc" ]]; then
-    source "$HOME/.zshrc"
-elif [[ "$current_shell" == "bash" && -f "$HOME/.bashrc" ]]; then
-    source "$HOME/.bashrc"
-fi
-
-echo "Dotfiles installation complete."
-
