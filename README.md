@@ -15,11 +15,17 @@ This repository contains my personal configuration files and setup scripts for m
 
   - **Usage**: Run `bootstrap.sh` to sync your dotfiles and install fonts.
 
+## Using
+
+```bash
+git clone https://github.com/JackieTreeh0rn/.dot-files && cd .dot-files && source bootstrap.sh
+```
+
 ## Features
 
-- **Tool Installation**: Installs a variety of tools and utilities using Homebrew, such as Python, GNU core utilities, Docker, and more.
-- **Zsh Configuration**: Sets up Oh My Zsh with plugins and themes, including Powerlevel10k.
-- **Font Installation**: Automatically installs fonts used by Oh-My-Zsh and Vscode, iTerm2, etc.
+- **Tool Installation**: Installs / updates a variety of tools and utilities using Homebrew, such as Python, GNU core utilities, Docker, iTerm2, and more.
+- **Zsh Configuration**: Sets up Oh-My-Zsh with plugins and themes, including Powerlevel10k.
+- **Font Installation**: Automatically installs fonts used by Oh-My-Zsh,Vscode, iTerm2, etc.
 - **iTerm2 Customization**: Includes color schemes for iTerm2.
 
 ## Screenshot
@@ -27,7 +33,7 @@ This repository contains my personal configuration files and setup scripts for m
 ![Screen Shot 2024-10-24 at 02 00 50 AM](https://github.com/user-attachments/assets/f37972d2-316f-496a-88e5-9d5634d08f1a)
 
 
-*This screenshot shows the terminal appearance after running the setup scripts.*
+*This capture shows the terminal appearance after running the scripts.*
 
 
 ## License
