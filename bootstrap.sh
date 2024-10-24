@@ -47,15 +47,17 @@ else
     fi
 fi
 
-# Only source configuration if files were synced
+# Only start a new shell session if files were synced
 if [ "$SYNCED" = true ]; then
-    # Source .zshrc if running in Zsh
-    if [ -n "$ZSH_VERSION" ] && [ -f "$HOME/.zshrc" ]; then
-        source "$HOME/.zshrc"
-        echo "Sourced .zshrc"
-    elif [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
-        source "$HOME/.bashrc"
-        echo "Sourced .bashrc"
+    # Check the default system shell and start a new shell session
+    current_shell=$(basename "$SHELL")
+
+    if [ "$current_shell" = "zsh" ]; then
+        echo "Starting a new Zsh session..."
+        zsh -i
+    elif [ "$current_shell" = "bash" ]; then
+        echo "Starting a new Bash session..."
+        bash --login
     fi
     echo "Dotfiles installation complete."
 fi
