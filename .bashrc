@@ -5,35 +5,42 @@ export PS1="\[\033[1;36m\]\u\[\033[01;37m\]@\[\033[01;34m\]\h\[\033[01;30m\][\[\
 # History
 # http://lpetr.org/blog/archives/preserve-bash-history
 export HISTSIZE=50000
-export HISTFILESIZE=50000
+export HISTFILESIZE="${HISTSIZE}"
 export HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
 
-# EXPORTS
+# Exports - Other
 # Add `~/bin` to the `$PATH`
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 # Homebrew
-eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
+export HOMEBREW_PREFIX=$(brew --prefix)
+eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 # GNU core utilities update from brew
 # export $(brew --prefix coreutils)/libexec/gnubin:$PATH
 export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
-#vmNet for Colima / Lima VM
-export PATH="$HOMEBREW_PREFIX/opt/socket_vmnet/bin:$PATH"
 # Python
 export PATH="$HOMEBREW_PREFIX/opt/python/libexec/bin:$PATH"
 # Python env 
 export WORKON_HOME=~"/.virtualenvs"
 source virtualenvwrapper.sh
-# MacPorts
-# export MANPATH="/opt/local/share/man:$MANPATH"
+# Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
+export PYTHONIOENCODING='UTF-8'
 # Set language character set
-export LANG=en_US.UTF-8
+export LANG='en_US.UTF-8'
+export LC_ALL='en_US.UTF-8'
 # Compilation flags
 export ARCHFLAGS="-arch $(uname -m)"
 # Docker w/colima
 export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
+# Highlight section titles in manual pages.
+export LESS_TERMCAP_md="${yellow}"
+# Don’t clear the screen after quitting a manual page.
+export MANPAGER='less -X'
+# Avoid issues with `gpg` as installed via Homebrew.
+# https://stackoverflow.com/a/42265848/96656
+export GPG_TTY=$(tty)
 
 
 # Preferred editor for local and remote sessions
@@ -55,6 +62,46 @@ unset file;
 
 # Custom Aliases
 # source ~/.custom/init.sh
+
+# Case-insensitive globbing (used in pathname expansion)
+shopt -s nocaseglob;
+
+# Append to the Bash history file, rather than overwriting it
+shopt -s histappend;
+
+# Autocorrect typos in path names when using `cd`
+shopt -s cdspell;
+
+# Enable some Bash 4 features when possible:
+# * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
+# * Recursive globbing, e.g. `echo **/*.txt`
+for option in autocd globstar; do
+	shopt -s "$option" 2> /dev/null;
+done;
+
+# Add tab completion for many Bash commands
+if which brew &> /dev/null && [ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]; then
+	# Ensure existing Homebrew v1 completions continue to work
+	export BASH_COMPLETION_COMPAT_DIR="$(brew --prefix)/etc/bash_completion.d";
+	source "$(brew --prefix)/etc/profile.d/bash_completion.sh";
+elif [ -f /etc/bash_completion ]; then
+	source /etc/bash_completion;
+fi;
+
+# Enable tab completion for `g` by marking it as an alias for `git`
+if type _git &> /dev/null; then
+	complete -o default -o nospace -F _git g;
+fi;
+
+# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
+[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+
+# Add tab completion for `defaults read|write NSGlobalDomain`
+# You could just use `-g` instead, but I like being explicit
+complete -W "NSGlobalDomain" defaults;
+
+# Add `killall` tab completion for common apps
+complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari SystemUIServer Terminal" killall;
 
 
 # FZF

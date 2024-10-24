@@ -61,7 +61,7 @@ calendarURLs=(
     "https://raw.githubusercontent.com/freebsd/calendar-data/main/calendar.computer"
     "https://raw.githubusercontent.com/freebsd/calendar-data/main/calendar.history"
     "https://raw.githubusercontent.com/freebsd/calendar-data/main/calendar.usholiday"
-    "https://raw.githubusercontent.com/freebsd/calendar-data/main/calendar.lotr"
+    # "https://raw.githubusercontent.com/freebsd/calendar-data/main/calendar.lotr"
 )
 
 # Download if not exists

@@ -6,41 +6,48 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 
-# History
+# Exports - History
 # https://unix.stackexchange.com/questions/273861/unlimited-history-in-zsh
 export HISTFILE=~/.zsh_history
 export HISTSIZE=500000
-export HISTFILESIZE=500000
+export HISTFILESIZE="${HISTSIZE}"
 export HISTCONTROL=ignoredups:erasedups
 export SAVEHIST=$HISTSIZE
 
 
-# EXPORTS
+# Exports - Other
 # Add `~/bin` to the `$PATH`
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 # Homebrew
-eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
+export HOMEBREW_PREFIX=$(brew --prefix)
+eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 # GNU core utilities update from brew
 # export $(brew --prefix coreutils)/libexec/gnubin:$PATH
 export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
-#vmNet for Colima / Lima VM
-export PATH="$HOMEBREW_PREFIX/opt/socket_vmnet/bin:$PATH"
 # Python
 export PATH="$HOMEBREW_PREFIX/opt/python/libexec/bin:$PATH"
 # Python env 
 export WORKON_HOME=~"/.virtualenvs"
 source virtualenvwrapper.sh
-# Path to your Oh My Zsh installation ZSH only!!!
-export ZSH="$HOME/.oh-my-zsh"
-# MacPorts
-# export MANPATH="/opt/local/share/man:$MANPATH"
+# Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
+export PYTHONIOENCODING='UTF-8'
 # Set language character set
-export LANG=en_US.UTF-8
+export LANG='en_US.UTF-8'
+export LC_ALL='en_US.UTF-8'
 # Compilation flags
 export ARCHFLAGS="-arch $(uname -m)"
 # Docker w/colima
 export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
-
+# Highlight section titles in manual pages.
+export LESS_TERMCAP_md="${yellow}"
+# Don’t clear the screen after quitting a manual page.
+export MANPAGER='less -X'
+# Avoid issues with `gpg` as installed via Homebrew.
+# https://stackoverflow.com/a/42265848/96656
+export GPG_TTY=$(tty)
+# Path to your Oh My Zsh installation  - ZSH only!!! 
+export ZSH="$HOME/.oh-my-zsh"
+export ZSH_CUSTOM="$ZSH/custom"
 
 
 # Set name of the theme to load --- if set to "random", it will
@@ -87,7 +94,7 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # You can also set it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-COMPLETION_WAITING_DOTS="true"
+# COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -112,14 +119,14 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 # git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 # git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git $ZSH_CUSTOM/plugins/zsh-autocomplete
-# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 plugins=(git zsh-autosuggestions zsh-autocomplete zsh-syntax-highlighting)
 # source autocomplete plugin
-source ~/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source $ZSH_CUSTOM/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # source syntax highlighting plugin
-source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source auto-suggestion plugin
-source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh  
+# source auto suggestions plugin
+source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 
 
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
@@ -153,13 +160,23 @@ source $ZSH/oh-my-zsh.sh
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
+for file in ~/.{path,zsh_prompt,exports,aliases,functions,extra}; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
 
 # Custom Aliases
 # source ~/.custom/init.sh
+
+# Case-insensitive globbing (used in pathname expansion)
+setopt NO_CASE_GLOB
+# Append to the Zsh history file, rather than overwriting it
+setopt APPEND_HISTORY
+# Autocorrect typos in path names when using `cd` autoCD
+setopt AUTO_CD
+# Enable recursive globbing
+setopt GLOBSTAR_SHORT
+
 
 # ZSH - import custom completions import that are placed here by utilities
 fpath+=~/.zfunc; autoload -Uz compinit; compinit
