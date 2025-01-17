@@ -13,7 +13,7 @@ export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; histor
 
 # Exports - Other
 # Add `~/bin` to the `$PATH`
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=/usr/local/bin:$HOME/.local/bin:$HOME/bin:$PATH
 # Homebrew
 if [ -x /opt/homebrew/bin/brew ]; then
     # Apple Silicon

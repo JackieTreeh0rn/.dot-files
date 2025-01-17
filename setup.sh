@@ -35,6 +35,7 @@ brew install gnupg
 brew install wget #--with-iri
 brew install moreutils
 brew install tree
+brew install rsync
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 brew install findutils
 # Install GNU `sed`, overwriting the built-in `sed`.
