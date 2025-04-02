@@ -112,6 +112,7 @@ brew intall asitop
 # brew install --cask --appdir="/Applications" multipass
 # brew install --cask --appdir="/Applications" visual-studio-code
 # brew install --cask --appdir="/Applications" spotify
+brew install --cask uninstallpkg  # uninstaller for .pkg's - has GUI
 
 # Remove outdated versions from the cellar.
 brew cleanup
