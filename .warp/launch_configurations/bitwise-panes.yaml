@@ -6,7 +6,7 @@
 #
 # This file defines your launch configuration.
 # More on how to do so here:
-# https://docs.warp.dev/features/session-management/launch-configurations
+# https://docs.warp.dev/features/sessions/launch-configurations
 #
 # All launch configurations are stored under ~/.warp/launch_configurations.
 # Edit them anytime!
@@ -22,18 +22,22 @@
 #            - exec: code .
 
 ---
-name: Bitwise
+name: Bitwise-panes
+active_window_index: 0
 windows:
-  - tabs:
+  - active_tab_index: 0
+    tabs:
       - layout:
           split_direction: vertical
           panes:
             - split_direction: horizontal
               panes:
-                - cwd: ~/
-                - cwd: ~/
+                - cwd: ""
+                - cwd: ""
+                - cwd: ""
+                  is_focused: true
             - split_direction: horizontal
               panes:
-                - cwd: ~/
-                - cwd: ~/
-                - cwd: ~/
+                - cwd: ""
+                - cwd: ""
+                - cwd: ""
