@@ -20,9 +20,11 @@ brew install python@3.12
 brew install virtualenv
 brew install virtualenvwrapper
 echo "Must add export WORKON_HOME=~"/.virtualenvs" and source virtualenvwrapper.sh to .zshrc or .bashrc"
-# Using: 
-# mkvirtualenv -p python3.12 ENVNAME
-# workon ENVNAME
+# Usage: mkvirtualenv -p python3.12 ENVNAME && workon ENVNAME
+
+brew install node
+brew install nvm
+# Usage: mkdir -p ~/.nvm && nvm install 22 && nvm use 22
 
 
 # Install GNU core utilities (those that come with macOS are outdated).
@@ -74,6 +76,7 @@ brew install dns2tcp
 # brew install foremost
 brew install hashcat
 # brew install hydra
+brew install ruby
 brew install john
 brew install knock
 brew install netpbm
@@ -131,12 +134,12 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM}
 
 # Theme - powerlevel10k
 # To configure, run `p10k configure` or edit ~/.p10k.zsh
-git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM}/themes/powerlevel10k   
+git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM}/themes/powerlevel10k
 echo "You must set ZSH_THEME="powerlevel10k/powerlevel10k" in ~/.zshrc"
 
 
 # Install Fonts
-# References: https://github.com/powerline/fonts 
+# References: https://github.com/powerline/fonts
 echo "Download and manually install fonts in your OS after..."
 mkdir -p "${HOME}/.fonts"
 curl --silent https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf --output ${HOME}/.fonts
@@ -151,7 +154,7 @@ echo "Select font in VSCode: settings.json -> "editor.fontFamily": "MesloLGS NF"
 git clone https://github.com/mbadolato/iTerm2-Color-Schemes ${HOME}/Downloads/iterm2-color-schemes
 ${HOME}/Downloads/iterm2-color-schemes/tools/import-scheme.sh -v ${HOME}/Downloads/iterm2-color-schemes/schemes/*
 rm -rf ${HOME}/Downloads/iterm2-color-schemes
-echo "You must restart iterm2 and change your theme at:" 
+echo "You must restart iterm2 and change your theme at:"
 echo "iTerm2 > Preferences > Profile > Colors > Color Presets -> Import: Argonaut"
 
 echo -#####################################-

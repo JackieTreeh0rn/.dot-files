@@ -26,13 +26,19 @@ export HOMEBREW_PREFIX=$(brew --prefix)
 # GNU core utilities update from brew
 # export $(brew --prefix coreutils)/libexec/gnubin:$PATH
 export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
+# Ruby
+export PATH="$HOMEBREW_PREFIX/opt/ruby/bin:$PATH"
 # Python
 export PATH="$HOMEBREW_PREFIX/opt/python/libexec/bin:$PATH"
-# Python env 
+# Python env
 export WORKON_HOME=~"/.virtualenvs"
 source virtualenvwrapper.sh
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
 export PYTHONIOENCODING='UTF-8'
+# Node / NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 # Set language character set
 export LANG='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
