@@ -30,13 +30,19 @@ export HOMEBREW_PREFIX=$(brew --prefix)
 # GNU core utilities update from brew
 # export $(brew --prefix coreutils)/libexec/gnubin:$PATH
 export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
+# Ruby
+export PATH="$HOMEBREW_PREFIX/opt/ruby/bin:$PATH"
 # Python
 export PATH="$HOMEBREW_PREFIX/opt/python/libexec/bin:$PATH"
-# Python env 
+# Python env
 export WORKON_HOME=~"/.virtualenvs"
 source virtualenvwrapper.sh
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
 export PYTHONIOENCODING='UTF-8'
+# Node / NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 # Set language character set
 export LANG='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
@@ -51,7 +57,7 @@ export MANPAGER='less -X'
 # Avoid issues with `gpg` as installed via Homebrew.
 # https://stackoverflow.com/a/42265848/96656
 export GPG_TTY=$(tty)
-# Path to your Oh My Zsh installation  - ZSH only!!! 
+# Path to your Oh My Zsh installation  - ZSH only!!!
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$ZSH/custom"
 
@@ -130,9 +136,9 @@ plugins=(git zsh-autosuggestions zsh-autocomplete zsh-syntax-highlighting)
 # source autocomplete plugin
 source $ZSH_CUSTOM/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # source syntax highlighting plugin
-source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh  
+source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 # source auto suggestions plugin
-source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 
+source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
