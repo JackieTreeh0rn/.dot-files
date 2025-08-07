@@ -111,7 +111,7 @@ brew install cowsay
 # Install iTerm
 brew install --cask --appdir="/Applications" iterm2
 brew install ffmpeg
-brew intall asitop
+brew install asitop
 # brew install --cask --appdir="/Applications" multipass
 # brew install --cask --appdir="/Applications" visual-studio-code
 # brew install --cask --appdir="/Applications" spotify
